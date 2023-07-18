@@ -2,6 +2,7 @@ package com.example.n2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.work.WorkManager
 import com.example.n2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +12,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         setFirstFrag()
+
+        val workManager = WorkManager.getInstance(this)
+
+
     }
 
     private fun setFirstFrag() {

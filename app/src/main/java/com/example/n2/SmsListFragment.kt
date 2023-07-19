@@ -31,14 +31,14 @@ class SmsListFragment : Fragment() {
 
         var smsClass = SmsClass("salam", 2, arrayOf("981236783", "987637773"))
 
-        val smsWorker = PeriodicWorkRequestBuilder<SmsWorker>(30, TimeUnit.SECONDS)
+        val smsWorker = PeriodicWorkRequestBuilder<SmsWorker>(10, TimeUnit.SECONDS)
             .setInputData(workDataOf("text" to "salam",
                                         "sourceSim" to 2,
                                        "recipients" to  arrayOf("981236783", "987637773")))
             .addTag("sms send").build()
 
 
-
+        Toast.makeText(context, "test", Toast.LENGTH_SHORT).show()
         workManager.enqueue( smsWorker )
 
 
@@ -48,11 +48,11 @@ class SmsListFragment : Fragment() {
 
                 val smsWorker = it[0]!!
                 if(smsWorker.state == WorkInfo.State.SUCCEEDED  ) {
-                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
                     binding.recyclerView.adapter = SmsAdapter(data)
 
                 }else{
-                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
                 }
 
 

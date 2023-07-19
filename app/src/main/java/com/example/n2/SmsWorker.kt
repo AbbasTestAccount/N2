@@ -1,6 +1,8 @@
 package com.example.n2
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -21,17 +23,18 @@ class SmsWorker(val context: Context, workerParams: WorkerParameters) : Worker(c
 
     override fun doWork(): Result {
 
+        showToast("oomad")
         val call = smsService.sendSms(SmsClass(inputData.getString("text")!!, inputData.getInt("sourceSim",1),
             inputData.getStringArray("recipients")!!
         ))
         call.enqueue(object : Callback<SmsClass>{
             override fun onResponse(call: Call<SmsClass>, response: retrofit2.Response<SmsClass>) {
-                Toast.makeText(context, "sms sent", Toast.LENGTH_SHORT).show()
+                showToast("sms sent")
 
             }
 
             override fun onFailure(call: Call<SmsClass>, t: Throwable) {
-                Toast.makeText(context, "sms failed", Toast.LENGTH_SHORT).show()
+                showToast("sms failed")
             }
 
 
@@ -39,6 +42,14 @@ class SmsWorker(val context: Context, workerParams: WorkerParameters) : Worker(c
 
         return Result.success(workDataOf("isSend" to "success"))
 
+
+    }
+
+    private fun showToast(message: String) {
+
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

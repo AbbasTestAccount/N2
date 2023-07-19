@@ -1,11 +1,11 @@
-package ir.shabrangkala.simplelibrary.Adapter
+package com.example.n2
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.n2.SmsClass
 import com.example.n2.databinding.SmsItemBinding
 
 
@@ -21,7 +21,8 @@ class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<Sm
             binding.sourceSim.text = data[position].sourceSim.toString()
 
             val temp = ""
-            for (i in 0..data[position].recipients.size){
+            for (i in 0 until data[position].recipients.size){
+                Toast.makeText(context, data[position].recipients[i], Toast.LENGTH_SHORT).show()
                 temp.plus(", ").plus(data[position].recipients[i])
             }
             binding.recipients.text = temp

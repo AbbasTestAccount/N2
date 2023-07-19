@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit
 class SmsListFragment : Fragment() {
 
     lateinit var binding: FragmentSmsListBinding
-    lateinit var data: ArrayList<SmsClass>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +41,8 @@ class SmsListFragment : Fragment() {
         workManager.enqueue( smsWorker )
 
 
+        var adapter = SmsAdapter(arrayListOf())
+
         workManager
             .getWorkInfosByTagLiveData("sms send")
             .observe(viewLifecycleOwner) {
@@ -49,7 +50,9 @@ class SmsListFragment : Fragment() {
                 val smsWorker = it[0]!!
                 if(smsWorker.state == WorkInfo.State.SUCCEEDED  ) {
 //                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
-                    binding.recyclerView.adapter = SmsAdapter(data)
+                    adapter.addItem(smsClass)
+                    binding.recyclerView.adapter = adapter
+
 
                 }else{
 //                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
@@ -60,7 +63,6 @@ class SmsListFragment : Fragment() {
 
 
 
-        data = arrayListOf(smsClass)
         return binding.root
     }
 

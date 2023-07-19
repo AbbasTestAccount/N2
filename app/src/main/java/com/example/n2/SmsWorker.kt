@@ -34,7 +34,7 @@ class SmsWorker(val context: Context, workerParams: WorkerParameters) : Worker(c
             }
 
             override fun onFailure(call: Call<SmsClass>, t: Throwable) {
-                showToast("sms failed")
+                showToast("sms failed  ${t.message}")
             }
 
 

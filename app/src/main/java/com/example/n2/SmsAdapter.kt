@@ -48,4 +48,9 @@ class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<Sm
     override fun getItemCount(): Int {
         return data.size
     }
+
+    fun addItem(smsClass: SmsClass){
+        data.add(smsClass)
+        notifyItemInserted(0)
+    }
 }

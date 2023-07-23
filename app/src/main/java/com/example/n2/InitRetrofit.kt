@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 //todo : device-ip should be found?
-const val BASE_URL = "http://37.156.52.141/"
+const val BASE_URL = "http://192.168.43.32:8081/"
 
 class InitRetrofit {
     private var retrofit: Retrofit? = null

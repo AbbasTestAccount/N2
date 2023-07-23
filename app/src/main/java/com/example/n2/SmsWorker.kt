@@ -3,15 +3,15 @@ package com.example.n2
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.telephony.SmsManager
 import android.widget.Toast
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import okhttp3.Response
 import retrofit2.Call
 import retrofit2.Callback
 
-class SmsWorker(val context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
+class SmsWorker(private val context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
     private val smsService : SmsService
 
@@ -39,6 +39,7 @@ class SmsWorker(val context: Context, workerParams: WorkerParameters) : Worker(c
 
 
         })
+
 
         return Result.success(workDataOf("isSend" to "success"))
 

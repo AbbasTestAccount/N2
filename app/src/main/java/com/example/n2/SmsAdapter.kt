@@ -20,12 +20,20 @@ class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<Sm
 
             binding.sourceSim.text = data[position].sourceSim.toString()
 
-            val temp = ""
-            for (i in 0 until data[position].recipients.size){
-                Toast.makeText(context, data[position].recipients[i], Toast.LENGTH_SHORT).show()
-                temp.plus(", ").plus(data[position].recipients[i])
+            binding.recipients.text = data[position].recipients[0]
+            var more = 0
+            if (data[position].recipients.size > 1){
+                for (i in 1 until data[position].recipients.size){
+                    if (i == 1){
+                        binding.recipients.text = binding.recipients.text.toString().plus(", ").plus(data[position].recipients[i])
+                    }else{
+                        more++
+                    }
+                }
             }
-            binding.recipients.text = temp
+            if (more != 0){
+                binding.recipients.text = binding.recipients.text.toString().plus(" and $more more")
+            }
             binding.TextMassage.text = data[position].text
 
 

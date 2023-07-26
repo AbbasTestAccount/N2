@@ -19,17 +19,24 @@ import org.koin.ktor.ext.Koin
 
 const val PORT = 8080
 
-class HttpService : Service() {
+class HttpService() : Service() {
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        return START_STICKY
+    }
     override fun onCreate() {
         super.onCreate()
+        val database = MyDatabase.getDatabase(this).smsDao
+
         Thread {
             InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE)
             embeddedServer(Netty, PORT) {
                 install(ContentNegotiation) { gson {} }
+                handleException()
                 install(Koin) {
                     modules(
                         module {
-                            single<SmsRepository> { SmsRepositoryImp() }
+                            single<SmsRepository> { SmsRepositoryImp(database, applicationContext) }
                             single { SmsService2() }
                         }
                     )

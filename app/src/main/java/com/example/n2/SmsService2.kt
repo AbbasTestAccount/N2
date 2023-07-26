@@ -9,8 +9,9 @@ class SmsService2 : KoinComponent {
 
     fun smsList(): List<SmsClass> = smsRepository.getItems()
 
-    fun addSms(smsClass: SmsClass) {
-        smsRepository.addItem(smsClass)
+    fun addSms(smsClass: SmsClass) : SmsClass {
+
+        return smsRepository.addItem(smsClass)
     }
 
     fun removeSms(smsClass: SmsClass) {

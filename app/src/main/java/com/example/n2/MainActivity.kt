@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        startService(Intent(this, HttpService::class.java))
+        startService(Intent(this, HttpService()::class.java))
 
         setFirstFrag()
 

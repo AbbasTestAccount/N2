@@ -1,14 +1,18 @@
 package com.example.n2
 
+import androidx.room.Dao
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity("SmsTable")
 data class SmsClass(
+    @PrimaryKey(autoGenerate = true)
+    val id : Int? = null,
+
     val text : String,
     val sourceSim : Int,
     val recipients : Array<String>
 ) {
-
-
-
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

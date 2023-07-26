@@ -25,42 +25,14 @@ class SmsListFragment : Fragment() {
     ): View? {
         binding = FragmentSmsListBinding.inflate(inflater, container, false)
 
-//        val workManager = WorkManager.getInstance(container!!.context)
-//
-//
-//        var smsClass = SmsClass("salam", 2, arrayOf("981236783", "987637773"))
-//
-//        val smsWorker = PeriodicWorkRequestBuilder<SmsWorker>(10, TimeUnit.SECONDS)
-//            .setInputData(workDataOf("text" to "salam",
-//                                        "sourceSim" to 2,
-//                                       "recipients" to  arrayOf("981236783", "987637773")))
-//            .addTag("sms send").build()
-//
-//
-//        Toast.makeText(context, "test", Toast.LENGTH_SHORT).show()
-//        workManager.enqueue( smsWorker )
-//
-//
-//        var adapter = SmsAdapter(arrayListOf())
-//
-//        workManager
-//            .getWorkInfosByTagLiveData("sms send")
-//            .observe(viewLifecycleOwner) {
-//
-//                val smsWorker = it[0]!!
-//                if(smsWorker.state == WorkInfo.State.SUCCEEDED  ) {
-////                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
-//                    adapter.addItem(smsClass)
-//                    binding.recyclerView.adapter = adapter
-//
-//
-//                }else{
-////                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
-//                }
-//
-//
-//            }
+        val database = MyDatabase.getDatabase(requireContext()).smsDao
 
+
+
+        database.getAllSms().observeForever {
+            var adapter = SmsAdapter(it as ArrayList<SmsClass>)
+            binding.recyclerView.adapter = adapter
+        }
 
 
         return binding.root
@@ -74,3 +46,55 @@ class SmsListFragment : Fragment() {
 
     }
 }
+
+//
+//override fun onCreateView(
+//    inflater: LayoutInflater,
+//    container: ViewGroup?,
+//    savedInstanceState: Bundle?
+//): View? {
+//    binding = FragmentSmsListBinding.inflate(inflater, container, false)
+//
+////        val workManager = WorkManager.getInstance(container!!.context)
+////
+////
+////        var smsClass = SmsClass("salam", 2, arrayOf("981236783", "987637773"))
+////
+////        val smsWorker = PeriodicWorkRequestBuilder<SmsWorker>(10, TimeUnit.SECONDS)
+////            .setInputData(workDataOf("text" to "salam",
+////                                        "sourceSim" to 2,
+////                                       "recipients" to  arrayOf("981236783", "987637773")))
+////            .addTag("sms send").build()
+////
+////
+////        Toast.makeText(context, "test", Toast.LENGTH_SHORT).show()
+////        workManager.enqueue( smsWorker )
+////
+////
+//    val database = MyDatabase.getDatabase(requireContext()).smsDao
+//
+//    var adapter = SmsAdapter(database.getAllSms() as ArrayList<SmsClass>)
+//    binding.recyclerView.adapter = adapter
+////
+////        workManager
+////            .getWorkInfosByTagLiveData("sms send")
+////            .observe(viewLifecycleOwner) {
+////
+////                val smsWorker = it[0]!!
+////                if(smsWorker.state == WorkInfo.State.SUCCEEDED  ) {
+//////                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
+////                    adapter.addItem(smsClass)
+////                    binding.recyclerView.adapter = adapter
+////
+////
+////                }else{
+//////                    Toast.makeText(requireContext(), "${smsWorker.outputData.getString("isSend")}", Toast.LENGTH_SHORT).show()
+////                }
+////
+////
+////            }
+//
+//
+//
+//    return binding.root
+//}

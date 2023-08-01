@@ -2,14 +2,17 @@ package com.example.n2
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.annotation.MenuRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.n2.databinding.SmsItemBinding
 
 
-class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<SmsAdapter.SMSViewHolder>() {
+class SmsAdapter(private val data: ArrayList<SmsClass>, private val smsItemInterface: SmsItemInterface?):RecyclerView.Adapter<SmsAdapter.SMSViewHolder>() {
     lateinit var binding: SmsItemBinding
 
     inner class SMSViewHolder(itemView : View, private val context: Context): RecyclerView.ViewHolder(itemView){
@@ -36,6 +39,16 @@ class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<Sm
             }
             binding.TextMassage.text = data[position].text
 
+            binding.date.text = data[position].date
+
+            binding.more.setOnClickListener {
+                showMenu(it, R.menu.sms_item_menu,context, data[position])
+            }
+
+            binding.item.setOnClickListener {
+                smsItemInterface!!.onSmsItemClicked(data[position])
+            }
+
 
         }
 
@@ -61,4 +74,38 @@ class SmsAdapter(private val data : ArrayList<SmsClass>):RecyclerView.Adapter<Sm
         data.add(smsClass)
         notifyItemInserted(0)
     }
+
+    private fun showMenu(v: View, @MenuRes menuRes: Int, context: Context, smsClass: SmsClass) {
+        val popup = PopupMenu(context, v)
+        popup.menuInflater.inflate(menuRes, popup.menu)
+
+        popup.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.delete ->{
+                    smsItemInterface!!.onDeleteClicked(it, smsClass)
+                }
+                R.id.archive ->{
+                    smsItemInterface!!.onArchivedClicked(it, smsClass)
+                }
+                R.id.resend ->{
+                    smsItemInterface!!.onResendClicked(it, smsClass)
+                }
+            }
+            true
+
+        }
+        popup.setOnDismissListener {
+            // Respond to popup being dismissed.
+        }
+        // Show the popup menu.
+        popup.show()
+    }
+}
+
+interface SmsItemInterface{
+    fun onDeleteClicked(menuItem: MenuItem, smsClass: SmsClass)
+    fun onArchivedClicked(menuItem: MenuItem, smsClass: SmsClass)
+    fun onResendClicked(menuItem: MenuItem, smsClass: SmsClass)
+
+    fun onSmsItemClicked(smsClass: SmsClass)
 }

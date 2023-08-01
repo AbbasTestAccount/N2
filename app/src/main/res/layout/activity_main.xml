@@ -9,6 +9,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:menu="@menu/main_toolbar_menu"
         android:background="?attr/colorSecondary">
 
         <com.google.android.material.appbar.MaterialToolbar

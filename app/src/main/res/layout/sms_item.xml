@@ -9,27 +9,28 @@
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        app:strokeColor="@color/borderColor"
+        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="?attr/colorPrimary"
         app:cardBackgroundColor="?attr/colorSecondary"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="3dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:rippleColor="?attr/colorPrimary"
+        app:strokeColor="@color/borderColor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="110dp">
 
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/recipients"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="recipients list "
@@ -39,6 +40,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:src="@drawable/more_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/recipients"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/recipients" />
+
             <TextView
                 android:id="@+id/sourceSim"
                 android:layout_width="20dp"
@@ -46,38 +59,41 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/sim_shape"
                 android:gravity="center"
+                android:paddingBottom="5dp"
                 android:text="2"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/recipients"
+                app:layout_constraintBottom_toBottomOf="@+id/date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recipients" />
+                app:layout_constraintTop_toTopOf="@+id/date" />
 
             <TextView
-                android:textStyle="italic"
                 android:id="@+id/TextMassage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
                 android:maxLines="2"
-                android:paddingBottom="10dp"
                 android:text="Text massage sada ssssdasddsada "
                 android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/date"
                 app:layout_constraintEnd_toStartOf="@+id/sourceSim"
                 app:layout_constraintStart_toStartOf="@+id/recipients"
                 app:layout_constraintTop_toBottomOf="@+id/recipients" />
 
 
             <TextView
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2023/12/12  9:15"
-                android:textSize="12sp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:paddingBottom="5dp"
+                android:text="2023/12/12  9:15"
+                android:layout_marginEnd="10dp"
+                android:textSize="12sp"
+                android:paddingTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/sourceSim" />
+                app:layout_constraintEnd_toStartOf="@+id/sourceSim" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

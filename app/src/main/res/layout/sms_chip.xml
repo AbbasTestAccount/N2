@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="55dp"
+    android:orientation="horizontal">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip"
+        style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:backgroundTint="?attr/colorSecondary"
+        android:text="09121242543"
+        />
+</LinearLayout>

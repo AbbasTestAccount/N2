@@ -11,7 +11,8 @@ data class SmsClass(
 
     val text : String,
     val sourceSim : Int,
-    val recipients : Array<String>
+    val recipients : Array<String>,
+    var date : String
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

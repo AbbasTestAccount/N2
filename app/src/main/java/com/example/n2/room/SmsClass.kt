@@ -1,6 +1,5 @@
-package com.example.n2
+package com.example.n2.room
 
-import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

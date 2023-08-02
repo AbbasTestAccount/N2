@@ -1,8 +1,8 @@
-package com.example.n2
+package com.example.n2.not_used
 
+import com.example.n2.room.SmsClass
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface SmsService {

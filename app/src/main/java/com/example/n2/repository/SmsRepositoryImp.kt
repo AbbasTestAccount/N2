@@ -1,12 +1,14 @@
-package com.example.n2
+package com.example.n2.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
+import com.example.n2.adapter.SmsAdapter
 import com.example.n2.databinding.FragmentSmsListBinding
+import com.example.n2.room.SmsClass
+import com.example.n2.room.SmsDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.n2
+package com.example.n2.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,10 +6,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.annotation.MenuRes
 import androidx.recyclerview.widget.RecyclerView
+import com.example.n2.R
 import com.example.n2.databinding.SmsItemBinding
+import com.example.n2.room.SmsClass
 
 
 class SmsAdapter(private val data: ArrayList<SmsClass>, private val smsItemInterface: SmsItemInterface?):RecyclerView.Adapter<SmsAdapter.SMSViewHolder>() {

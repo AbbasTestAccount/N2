@@ -35,11 +35,11 @@
         </activity>
 
         <service
-            android:name=".HttpService"
+            android:name=".http_service.HttpService"
             android:enabled="true" />
 
         <receiver
-            android:name=".BootCompletedReceiver"
+            android:name=".http_service.BootCompletedReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

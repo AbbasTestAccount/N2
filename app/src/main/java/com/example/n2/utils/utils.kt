@@ -2,16 +2,8 @@
 
 package com.example.n2.utils
 
-import android.content.Context
-import android.os.Build
-import android.os.Handler
-import android.os.Looper
 import android.telephony.SmsManager
-import android.telephony.SubscriptionManager
-import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import com.example.n2.SmsClass
+import com.example.n2.room.SmsClass
 
 
 fun sendSms(smsClass: SmsClass) {

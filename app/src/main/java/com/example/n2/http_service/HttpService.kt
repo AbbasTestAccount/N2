@@ -1,7 +1,5 @@
-package com.example.n2
+package com.example.n2.http_service
 
-import android.R.attr.port
-import android.app.ActivityManager
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -14,6 +12,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
+import com.example.n2.repository.SmsRepository
+import com.example.n2.repository.SmsRepositoryImp
+import com.example.n2.room.MyDatabase
+import com.example.n2.room.SmsDao
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.gson.gson
@@ -25,9 +27,6 @@ import io.netty.util.internal.logging.JdkLoggerFactory
 import org.koin.core.context.GlobalContext.stopKoin
 import org.koin.dsl.module
 import org.koin.ktor.ext.Koin
-import java.io.IOException
-import java.net.InetSocketAddress
-import java.net.Socket
 
 
 const val PORT = 8080

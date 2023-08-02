@@ -1,7 +1,8 @@
-package com.example.n2
+package com.example.n2.http_service
 
-import android.app.PendingIntent
 import android.telephony.SmsManager
+import com.example.n2.repository.SmsRepository
+import com.example.n2.room.SmsClass
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

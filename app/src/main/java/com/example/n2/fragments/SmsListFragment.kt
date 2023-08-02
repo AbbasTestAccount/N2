@@ -1,4 +1,4 @@
-package com.example.n2
+package com.example.n2.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.n2.R
+import com.example.n2.http_service.SmsService2
+import com.example.n2.adapter.SmsAdapter
+import com.example.n2.adapter.SmsItemInterface
 import com.example.n2.databinding.FragmentSmsListBinding
+import com.example.n2.http_service.oldSendSmsFun
+import com.example.n2.room.MyDatabase
+import com.example.n2.room.SmsClass
 import org.koin.android.ext.android.inject
 
 class SmsListFragment : Fragment(), SmsItemInterface {

@@ -1,19 +1,9 @@
-package com.example.n2
+package com.example.n2.not_used
 
 import android.content.Context
-import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import io.ktor.application.install
-import io.ktor.features.ContentNegotiation
-import io.ktor.gson.gson
-import io.ktor.routing.Routing
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
-import io.netty.util.internal.logging.InternalLoggerFactory
-import io.netty.util.internal.logging.JdkLoggerFactory
-import org.koin.dsl.module
-import org.koin.ktor.ext.Koin
+import com.example.n2.room.MyDatabase
 
 class HttpWorker(val context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 

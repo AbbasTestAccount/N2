@@ -1,23 +1,20 @@
 package com.example.n2
 
 import android.Manifest
-import android.app.Activity
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.telephony.SmsManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.n2.databinding.ActivityMainBinding
+import com.example.n2.fragments.SmsListFragment
+import com.example.n2.http_service.HttpService
+import com.example.n2.http_service.PORT
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
-import java.security.AccessController.getContext
 
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.n2
+package com.example.n2.http_service
 
 import io.ktor.application.Application
 import io.ktor.application.call

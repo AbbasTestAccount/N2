@@ -1,4 +1,4 @@
-package com.example.n2
+package com.example.n2.not_used
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

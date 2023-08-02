@@ -1,10 +1,11 @@
-package com.example.n2
+package com.example.n2.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.n2.not_used.Converters
 
 @Database(entities = [SmsClass::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

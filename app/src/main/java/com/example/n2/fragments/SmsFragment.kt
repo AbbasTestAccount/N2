@@ -1,4 +1,4 @@
-package com.example.n2
+package com.example.n2.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.n2.adapter.SmsItemAdapter
 import com.example.n2.databinding.FragmentSmsBinding
+import com.example.n2.room.SmsClass
 
 class SmsFragment(val smsClass: SmsClass) : Fragment() {
     lateinit var binding: FragmentSmsBinding

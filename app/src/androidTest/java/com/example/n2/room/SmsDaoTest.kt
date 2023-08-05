@@ -13,6 +13,9 @@ import org.junit.Rule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.example.n2.repository.room.MyDatabase
+import com.example.n2.repository.room.SmsClass
+import com.example.n2.repository.room.SmsDao
 
 @ExperimentalCoroutinesApi
 @SmallTest

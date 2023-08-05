@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.n2.adapter.SmsItemAdapter
 import com.example.n2.databinding.FragmentSmsBinding
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 
 class SmsFragment(val smsClass: SmsClass) : Fragment() {
     lateinit var binding: FragmentSmsBinding

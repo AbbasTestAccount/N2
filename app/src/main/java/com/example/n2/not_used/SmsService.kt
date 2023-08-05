@@ -1,6 +1,6 @@
 package com.example.n2.not_used
 
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

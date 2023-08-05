@@ -3,7 +3,7 @@
 package com.example.n2.utils
 
 import android.telephony.SmsManager
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 
 
 fun sendSms(smsClass: SmsClass) {

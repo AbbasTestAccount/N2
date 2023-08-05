@@ -1,6 +1,6 @@
 package com.example.n2.http_service
 
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive

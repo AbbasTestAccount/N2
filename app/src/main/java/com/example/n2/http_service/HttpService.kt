@@ -14,8 +14,8 @@ import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
 import com.example.n2.repository.SmsRepository
 import com.example.n2.repository.SmsRepositoryImp
-import com.example.n2.room.MyDatabase
-import com.example.n2.room.SmsDao
+import com.example.n2.repository.room.MyDatabase
+import com.example.n2.repository.room.SmsDao
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.gson.gson

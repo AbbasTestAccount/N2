@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import androidx.lifecycle.LifecycleObserver
 import com.example.n2.adapter.SmsAdapter
 import com.example.n2.databinding.FragmentSmsListBinding
-import com.example.n2.room.SmsClass
-import com.example.n2.room.SmsDao
+import com.example.n2.repository.room.SmsClass
+import com.example.n2.repository.room.SmsDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ import java.util.Date
 
 class SmsRepositoryImp(private val database: SmsDao, context: Context) : SmsRepository, LifecycleObserver {
     private var idCount = 0
-    private var smsList = ArrayList<SmsClass>()
+    var smsList = ArrayList<SmsClass>()
     val binding = FragmentSmsListBinding.inflate(LayoutInflater.from(context))
 
 

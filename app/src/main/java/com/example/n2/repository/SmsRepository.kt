@@ -1,6 +1,6 @@
 package com.example.n2.repository
 
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 
 interface SmsRepository {
     fun addItem(smsItem : SmsClass) : SmsClass

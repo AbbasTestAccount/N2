@@ -13,8 +13,8 @@ import com.example.n2.adapter.SmsAdapter
 import com.example.n2.adapter.SmsItemInterface
 import com.example.n2.databinding.FragmentSmsListBinding
 import com.example.n2.http_service.oldSendSmsFun
-import com.example.n2.room.MyDatabase
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.MyDatabase
+import com.example.n2.repository.room.SmsClass
 import org.koin.android.ext.android.inject
 
 class SmsListFragment : Fragment(), SmsItemInterface {

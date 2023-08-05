@@ -10,7 +10,7 @@ import androidx.annotation.MenuRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.n2.R
 import com.example.n2.databinding.SmsItemBinding
-import com.example.n2.room.SmsClass
+import com.example.n2.repository.room.SmsClass
 
 
 class SmsAdapter(private val data: ArrayList<SmsClass>, private val smsItemInterface: SmsItemInterface?):RecyclerView.Adapter<SmsAdapter.SMSViewHolder>() {

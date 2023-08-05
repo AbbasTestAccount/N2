@@ -26,9 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
 //        val workManager = WorkManager.getInstance(this)
-//
 //        val httpWorker = OneTimeWorkRequest.from(HttpWorker::class.java)
-//
 //        workManager.enqueue(httpWorker)
 
         val sharedPreferences = getSharedPreferences("makeNew", MODE_PRIVATE)
@@ -49,9 +47,8 @@ class MainActivity : AppCompatActivity() {
             sharedPreferences.edit().putBoolean("first run", false).apply()
         }
 
+        //stopService(Intent(this, HttpService()::class.java))
 
-
-        //            stopService(Intent(this, HttpService()::class.java))
         if (checkPort()) {
             Toast.makeText(this, "saaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show()
         }else{
@@ -66,18 +63,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        startService(Intent(this, HttpService()::class.java))
-//        Log.e("Abbas2", "onDestroy: ")
-//    }
-
     private fun setFirstFrag() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.mainFrame, SmsListFragment())
         transaction.commit()
     }
 
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        startService(Intent(this, HttpService()::class.java))
+//        Log.e("Abbas2", "onDestroy: ")
+//    }
 
 }
 

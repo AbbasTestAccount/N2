@@ -3,7 +3,7 @@ package com.example.n2.not_used
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.example.n2.room.MyDatabase
+import com.example.n2.repository.room.MyDatabase
 
 class HttpWorker(val context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 

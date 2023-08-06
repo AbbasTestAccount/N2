@@ -4,6 +4,7 @@ import android.telephony.SmsManager
 import com.example.n2.repository.SmsRepository
 import com.example.n2.repository.room.SmsClass
 import com.example.n2.utils.oldSendSmsFun
+import com.example.n2.utils.sendSms
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -14,7 +15,7 @@ class SmsService2 : KoinComponent {
     fun smsList(): List<SmsClass> = smsRepository.getItems()
 
     fun addSms(smsClass: SmsClass) : SmsClass {
-        oldSendSmsFun(smsClass)
+        sendSms(smsClass)
         return smsRepository.addItem(smsClass)
     }
 

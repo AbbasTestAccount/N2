@@ -25,7 +25,7 @@ class SmsRepositoryImpTest {
     fun setUp() {
         database = MyDatabase.getDatabase(ApplicationProvider.getApplicationContext())
         dao = database.smsDao
-        smsRepositoryImp = SmsRepositoryImp(dao, ApplicationProvider.getApplicationContext())
+        smsRepositoryImp = SmsRepositoryImp(dao)
     }
 
     @After

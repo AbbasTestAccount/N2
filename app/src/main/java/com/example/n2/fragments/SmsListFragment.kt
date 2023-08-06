@@ -18,6 +18,7 @@ import com.example.n2.repository.room.MyDatabase
 import com.example.n2.repository.room.SmsClass
 import com.example.n2.utils.MainViewModelFactory
 import com.example.n2.utils.oldSendSmsFun
+import com.example.n2.utils.sendSms
 import org.koin.android.ext.android.inject
 
 class SmsListFragment : Fragment(), SmsItemInterface {
@@ -69,7 +70,7 @@ class SmsListFragment : Fragment(), SmsItemInterface {
     }
 
     override fun onResendClicked(menuItem: MenuItem, smsClass: SmsClass) {
-        oldSendSmsFun(smsClass)
+        sendSms(smsClass)
     }
 
     override fun onSmsItemClicked(smsClass: SmsClass) {

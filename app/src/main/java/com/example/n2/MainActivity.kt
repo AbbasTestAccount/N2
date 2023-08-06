@@ -11,10 +11,8 @@ import androidx.core.content.ContextCompat
 import com.example.n2.databinding.ActivityMainBinding
 import com.example.n2.fragments.SmsListFragment
 import com.example.n2.http_service.HttpService
-import com.example.n2.http_service.PORT
-import java.io.IOException
-import java.net.InetSocketAddress
-import java.net.Socket
+import com.example.n2.utils.checkPort
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -55,11 +53,7 @@ class MainActivity : AppCompatActivity() {
             startService(Intent(this, HttpService()::class.java))
         }
 
-
-
-
         setFirstFrag()
-
 
     }
 
@@ -77,14 +71,5 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-fun checkPort(): Boolean {
-    val socket = Socket()
-    try {
-        socket.bind(InetSocketAddress(PORT))
-        socket.close()
-    } catch (e: IOException) {
-        return true
-    }
-    return false
-}
+
 

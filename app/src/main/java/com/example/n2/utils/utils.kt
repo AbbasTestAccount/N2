@@ -3,7 +3,11 @@
 package com.example.n2.utils
 
 import android.telephony.SmsManager
+import com.example.n2.http_service.PORT
 import com.example.n2.repository.room.SmsClass
+import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
 
 
 fun sendSms(smsClass: SmsClass) {
@@ -28,5 +32,16 @@ fun oldSendSmsFun(smsClass: SmsClass) : Int {
         }
     }
     return did_not_send
+}
+
+fun checkPort(): Boolean {
+    val socket = Socket()
+    try {
+        socket.bind(InetSocketAddress(PORT))
+        socket.close()
+    } catch (e: IOException) {
+        return true
+    }
+    return false
 }
 

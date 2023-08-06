@@ -3,10 +3,8 @@ package com.example.n2.repository
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import android.view.LayoutInflater
 import androidx.lifecycle.LifecycleObserver
-import com.example.n2.adapter.SmsAdapter
-import com.example.n2.databinding.FragmentSmsListBinding
+import androidx.lifecycle.LiveData
 import com.example.n2.repository.room.SmsClass
 import com.example.n2.repository.room.SmsDao
 import kotlinx.coroutines.Dispatchers
@@ -15,10 +13,9 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class SmsRepositoryImp(private val database: SmsDao, context: Context) : SmsRepository, LifecycleObserver {
+class SmsRepositoryImp(private val database: SmsDao) : SmsRepository, LifecycleObserver {
     private var idCount = 0
     var smsList = ArrayList<SmsClass>()
-    val binding = FragmentSmsListBinding.inflate(LayoutInflater.from(context))
 
 
     init {
@@ -28,6 +25,10 @@ class SmsRepositoryImp(private val database: SmsDao, context: Context) : SmsRepo
                 smsList = it as ArrayList<SmsClass>
             }
         }
+    }
+
+    fun getAllSms() : LiveData<List<SmsClass>>{
+        return database.getAllSms()
     }
 
 
@@ -56,15 +57,6 @@ class SmsRepositoryImp(private val database: SmsDao, context: Context) : SmsRepo
 
     override fun getItems(): ArrayList<SmsClass> {
         return smsList
-    }
-
-    private fun setAdapter(){
-        GlobalScope.launch(Dispatchers.Main) {
-            database.getAllSms().observeForever { smsList ->
-                val adapter = SmsAdapter(smsList as ArrayList<SmsClass>, null)
-                binding.recyclerView.adapter = adapter
-            }
-        }
     }
 
 }

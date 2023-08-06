@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
+import com.example.n2.R
 import com.example.n2.repository.SmsRepository
 import com.example.n2.repository.SmsRepositoryImp
 import com.example.n2.repository.room.MyDatabase
@@ -49,7 +50,7 @@ class HttpService() : JobIntentService() {
                 install(Koin) {
                     modules(
                         module {
-                            single<SmsRepository> { SmsRepositoryImp(database, applicationContext) }
+                            single<SmsRepository> { SmsRepositoryImp(database) }
                             single { SmsService2() }
                         }
                     )
@@ -93,7 +94,9 @@ class HttpService() : JobIntentService() {
             notificationManager.createNotificationChannel(notificationChannel)
         }
         val notification = NotificationCompat.Builder(applicationContext, notificationChannelId)
-            .setContentTitle("test")
+            .setContentTitle("SMS")
+            .setSmallIcon(R.drawable.sms_icon)
+            .setContentText("SMSify is running !")
         return notification.build()
 
     }

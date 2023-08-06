@@ -13,3 +13,20 @@ fun sendSms(smsClass: SmsClass) {
     }
 }
 
+fun oldSendSmsFun(smsClass: SmsClass) : Int {
+    var did_not_send = 0
+    val smsManager = SmsManager.getDefault()
+    val message = smsClass.text
+//        val sentIntent = PendingIntent.getBroadcast(context, 0, Intent("SMS_SENT"), 0)
+//        val deliveredIntent = PendingIntent.getBroadcast(context, 0, Intent("SMS_DELIVERED"), 0)
+
+    for (i in 0 until smsClass.recipients.size){
+        try {
+            smsManager.sendTextMessage(smsClass.recipients[i], null, message, null, null)
+        }catch (e : Exception){
+            did_not_send++
+        }
+    }
+    return did_not_send
+}
+

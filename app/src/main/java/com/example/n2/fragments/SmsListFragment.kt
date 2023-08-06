@@ -6,21 +6,25 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.n2.R
 import com.example.n2.http_service.SmsService2
 import com.example.n2.adapter.SmsAdapter
 import com.example.n2.adapter.SmsItemInterface
 import com.example.n2.databinding.FragmentSmsListBinding
-import com.example.n2.http_service.oldSendSmsFun
+import com.example.n2.repository.SmsRepositoryImp
 import com.example.n2.repository.room.MyDatabase
 import com.example.n2.repository.room.SmsClass
+import com.example.n2.utils.MainViewModelFactory
+import com.example.n2.utils.oldSendSmsFun
 import org.koin.android.ext.android.inject
 
 class SmsListFragment : Fragment(), SmsItemInterface {
 
     lateinit var binding: FragmentSmsListBinding
-    val smsService by inject<SmsService2>()
+    private val smsService by inject<SmsService2>()
+    private lateinit var smsListFragmentViewModel: SmsListFragmentViewModel
 
 
     override fun onCreateView(
@@ -30,24 +34,28 @@ class SmsListFragment : Fragment(), SmsItemInterface {
     ): View? {
         binding = FragmentSmsListBinding.inflate(inflater, container, false)
 
-        val database = MyDatabase.getDatabase(requireContext()).smsDao
+        smsListFragmentViewModel = ViewModelProvider(
+            this,
+            MainViewModelFactory(
+                SmsRepositoryImp(
+                    MyDatabase.getDatabase(requireContext()).smsDao
+                )
+            )
+        )[SmsListFragmentViewModel::class.java]
 
 
-
-        database.getAllSms().observeForever {
+        smsListFragmentViewModel.getAllSms().observe(requireActivity()) {
             var adapter = SmsAdapter(it as ArrayList<SmsClass>, this)
             binding.recyclerView.adapter = adapter
         }
-
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
     }
 
@@ -65,13 +73,10 @@ class SmsListFragment : Fragment(), SmsItemInterface {
     }
 
     override fun onSmsItemClicked(smsClass: SmsClass) {
-        openSmsItem(smsClass)
-    }
-
-    private fun openSmsItem(smsClass: SmsClass) {
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.mainFrame, SmsFragment(smsClass))
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
 }

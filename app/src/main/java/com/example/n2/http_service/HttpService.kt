@@ -60,11 +60,6 @@ class HttpService() : JobIntentService() {
                 }
             }.start(wait = true)
         }.start()
-
-
-
-
-
         return START_STICKY
     }
 

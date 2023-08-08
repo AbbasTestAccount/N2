@@ -17,7 +17,6 @@ import com.example.n2.repository.SmsRepositoryImp
 import com.example.n2.repository.room.MyDatabase
 import com.example.n2.repository.room.SmsClass
 import com.example.n2.utils.MainViewModelFactory
-import com.example.n2.utils.oldSendSmsFun
 import com.example.n2.utils.sendSms
 import org.koin.android.ext.android.inject
 

@@ -1,9 +1,7 @@
 package com.example.n2.http_service
 
-import android.telephony.SmsManager
 import com.example.n2.repository.SmsRepository
 import com.example.n2.repository.room.SmsClass
-import com.example.n2.utils.oldSendSmsFun
 import com.example.n2.utils.sendSms
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

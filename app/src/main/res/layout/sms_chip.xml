@@ -13,6 +13,7 @@
         android:layout_height="45dp"
         android:layout_margin="5dp"
         android:backgroundTint="?attr/colorSecondary"
+        android:textColor="?attr/colorSurface"
         android:text="09121242543"
         />
 </LinearLayout>
